@@ -70,7 +70,7 @@
                     android:layout_weight="2.29"
                     android:ems="10"
                     android:hint="Buscar por ID"
-                    android:inputType="textPersonName" />
+                    android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout

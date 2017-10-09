@@ -3,6 +3,7 @@ package mx.itesm.eibt.prototipoemprendimiento;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 
 import com.jjoe64.graphview.GraphView;
@@ -30,6 +31,7 @@ public class Industria extends AppCompatActivity {
         setContentView(R.layout.activity_industria);
         container = (LinearLayout) findViewById(R.id.container);
         container.setVerticalScrollBarEnabled(true);
+        DatePicker dp = new DatePicker(this);
     }
 
     private void addNewGraph(LineGraphSeries<DataPoint> series) {

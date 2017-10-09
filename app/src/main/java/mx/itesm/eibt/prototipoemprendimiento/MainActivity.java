@@ -1,12 +1,14 @@
 package mx.itesm.eibt.prototipoemprendimiento;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -18,16 +20,22 @@ import java.sql.Statement;
 
 public class MainActivity extends AppCompatActivity {
     SQLConnect con;
+    EditText username;
+    EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         con = new SQLConnect();
+        username = (EditText)findViewById(R.id.username);
+        password = (EditText)findViewById(R.id.password);
         Button button = (Button) findViewById(R.id.ingresar);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 revisarCredenciales();
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(password.getWindowToken(), 0);
             }
         });
     }
@@ -130,8 +138,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void revisarCredenciales()
     {
-        String username = ((EditText)findViewById(R.id.username)).getText().toString();
-        String password = ((EditText)findViewById(R.id.password)).getText().toString();
+        String username = this.username.getText().toString();
+        String password = this.password.getText().toString();
         if(!username.equals(""))
         {
             if(!password.equals(""))

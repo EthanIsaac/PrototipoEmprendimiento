@@ -57,12 +57,13 @@ public class Monitor extends AppCompatActivity {
 
         });
         industries=new ArrayList<String>();
-        //industries.add("Selecciona una opción");
         adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, industries);
         results.setAdapter(adapter);
         Button search = (Button) findViewById(R.id.search);
         search.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(results.getWindowToken(), 0);
                 if(((RadioButton)findViewById(R.id.searchById)).isChecked())
                 {
                     EditText id = (EditText)findViewById(R.id.id);
@@ -153,6 +154,7 @@ public class Monitor extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    industries.clear();
                                     mensajeError("No existe ninguna industria con ese nombre.");
                                     adapter.notifyDataSetChanged();
                                 }
@@ -164,8 +166,6 @@ public class Monitor extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     adapter.notifyDataSetChanged();
-                                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                                    imm.hideSoftInputFromWindow(results.getWindowToken(), 0);
                                 }
                             });
                         }

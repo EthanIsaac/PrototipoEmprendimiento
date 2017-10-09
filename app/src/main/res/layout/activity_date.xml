@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:layout_centerHorizontal="false"
     android:layout_centerInParent="false"
-    tools:context="mx.itesm.eibt.prototipoemprendimiento.Date">
+    tools:context="mx.itesm.eibt.prototipoemprendimiento.Date"
+    tools:layout_editor_absoluteY="89dp"
+    tools:layout_editor_absoluteX="0dp">
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="800dp"
         android:layout_height="800dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteY="172dp"
+        tools:layout_editor_absoluteX="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             tools:layout_editor_absoluteY="8dp">
 
             <LinearLayout
-                android:layout_width="760dp"
+                android:layout_width="740dp"
                 android:layout_height="match_parent"
                 android:gravity="right"
                 android:orientation="horizontal">

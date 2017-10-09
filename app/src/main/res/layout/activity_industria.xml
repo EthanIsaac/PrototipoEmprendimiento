@@ -7,21 +7,63 @@
     tools:context="mx.itesm.eibt.prototipoemprendimiento.Industria">
 
     <LinearLayout
-        android:id="@+id/container"
-        android:layout_width="0dp"
-        android:layout_height="495dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
+        android:layout_width="760dp"
+        android:layout_height="50dp"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="8dp"
-        android:weightSum="1">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <DatePicker
-            android:id="@+id/datePicker"
+        <Spinner
+            android:id="@+id/registers"
             android:layout_width="wrap_content"
-            android:layout_height="404dp" />
+            android:layout_height="wrap_content"
+            android:layout_weight="0.19"
+            android:gravity="center"
+            android:textSize="30dp" />
 
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.08"
+            android:orientation="horizontal"></LinearLayout>
+
+        <Button
+            android:id="@+id/back"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regresar" />
     </LinearLayout>
 
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="800dp"
+        android:layout_height="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/containerIndustria"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:weightSum="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="8dp">
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/graph"
+                android:layout_width="700dp"
+                android:layout_height="350dp"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

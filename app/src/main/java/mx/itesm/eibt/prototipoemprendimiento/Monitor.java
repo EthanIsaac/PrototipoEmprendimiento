@@ -7,16 +7,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
@@ -46,7 +42,9 @@ public class Monitor extends AppCompatActivity {
                 if(position!=0)
                 {
                     String[] parts = results.getSelectedItem().toString().split(Pattern.quote("-"));
-                    cargarIndustria(Integer.parseInt(parts[0]),parts[1]);
+                    industries.clear();
+                    adapter.notifyDataSetChanged();
+                    cargarIndustria(parts[0],parts[1]);
                 }
             }
 
@@ -205,7 +203,7 @@ public class Monitor extends AppCompatActivity {
                         ResultSet rs = st.executeQuery("SELECT id_industry, name FROM industry WHERE id_industry=" + industryID + ";");
                         if(rs.next())
                         {
-                            cargarIndustria(rs.getInt("id_industry"), rs.getString("name"));
+                            cargarIndustria(industryID, rs.getString("name"));
                         }
                         else
                         {
@@ -240,8 +238,8 @@ public class Monitor extends AppCompatActivity {
         }
     }
 
-    private void cargarIndustria(int id_industry, String name) {
-        Intent intent = new Intent(this, Industria.class);
+    private void cargarIndustria(String id_industry, String name) {
+        Intent intent = new Intent(this, Date.class);
         intent.putExtra("user", getIntent().getStringExtra("user"));
         intent.putExtra("id_industry", id_industry);
         intent.putExtra("name_industry", name);

@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Monitor" />
+        <activity android:name=".Date" />
         <activity android:name=".Industria"></activity>
     </application>
 

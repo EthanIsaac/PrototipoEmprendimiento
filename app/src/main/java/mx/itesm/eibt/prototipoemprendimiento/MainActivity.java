@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -56,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
                             Class.forName("com.mysql.jdbc.Driver").newInstance();
                             Connection con = DriverManager.getConnection(sqlUrl, sqlUser, sqlPassword);
                             Statement st = con.createStatement();
-                            ResultSet rs = st.executeQuery("SELECT user.username, user.password, user.id_industry, industry.name FROM user, industry WHERE user.username='" + user + "';");
+                            ResultSet rs = st.executeQuery("SELECT * FROM user u, industry i WHERE u.username='" + user + "' AND i.id_industry=u.id_industry;");
                             if(rs.next())
                             {
                                 if(password.equals(rs.getString("password")))
                                 {
-                                    iniciarSesion(user, rs.getInt("user.id_industry"), rs.getString("industry.name"));
+                                    iniciarSesion(user, rs.getInt("u.id_industry"), rs.getString("i.name"));
                                 }
                                 else
                                 {
@@ -107,11 +108,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void iniciarSesion(String user, int id_industry, String name) {
-        if(id_industry>0) // Industria
+        if(id_industry>0) // Date
         {
-            Intent intent = new Intent(this, Industria.class);
+            Intent intent = new Intent(this, Date.class);
             intent.putExtra("user",user);
-            intent.putExtra("id_industry",id_industry);
+            intent.putExtra("id_industry",""+id_industry);
             intent.putExtra("name_industry", name);
             startActivity(intent);
         }

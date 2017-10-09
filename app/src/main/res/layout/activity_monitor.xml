@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.itesm.eibt.prototipoemprendimiento.Monitor">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="495dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="8dp"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:gravity="right|center_vertical"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/logout"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cerrar sesión" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:text="Búsqueda de industrias"
+            android:textSize="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"></LinearLayout>
+
+        <RadioGroup
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/searchById"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:duplicateParentState="false"
+                    android:onClick="onRadioButtonClicked" />
+
+                <EditText
+                    android:id="@+id/id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.29"
+                    android:ems="10"
+                    android:hint="Buscar por ID"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/searchByName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onRadioButtonClicked" />
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="252dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Buscar por nombre"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+        </RadioGroup>
+
+        <Button style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/search"
+            android:layout_width="195dp"
+            android:layout_height="wrap_content"
+            android:text="Buscar" />
+
+        <Spinner
+            android:id="@+id/results"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.19"
+            android:gravity="center"
+            android:textSize="30dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
